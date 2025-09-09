@@ -2,7 +2,7 @@
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 // export const Base_Url = `http://localhost:4505`
-export const Base_Url = `https://1e999b4d6da6.ngrok-free.app`
+export const Base_Url = `http://91.108.111.17:4505`
 
 interface ApiCallOptions {
     method?: HttpMethod;
