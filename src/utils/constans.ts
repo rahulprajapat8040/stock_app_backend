@@ -1,1 +1,1 @@
-export const Base_Url = `http://91.108.111.17:4505`
+export const Base_Url = `https://api.playgolddwin.com`
