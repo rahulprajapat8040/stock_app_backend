@@ -52,9 +52,10 @@ const AddForm = () => {
 
         const slotsArr: string[] = [];
         let temp = slotStart.clone();
-        const endOfDay = baseDate.clone().hour(21).minute(0).second(0);
+        // ✅ extend end of day to 21:20 instead of 21:00
+        const endOfDay = baseDate.clone().hour(21).minute(20).second(0);
 
-        while (temp.isBefore(endOfDay)) {
+        while (temp.isSameOrBefore(endOfDay)) {
             let gap = temp.isBefore(baseDate.clone().hour(15)) ? 15 : 20;
             slotsArr.push(temp.format("YYYY-MM-DD HH:mm:ss"));
             temp.add(gap, "minutes");
@@ -106,6 +107,30 @@ const AddForm = () => {
         }
     };
 
+    // 🟡 Auto Generate for all slots of the day
+    const handleAutoGenerate = async () => {
+        const payload = slots.map((slot) => {
+            const randomNumbers = prefixes.map(() =>
+                String(Math.floor(Math.random() * 100)).padStart(2, "0")
+            );
+            const finalNumbers = randomNumbers.map((val, idx) => `${prefixes[idx]}${val}`);
+
+            return {
+                stockTime: slot,
+                stockPrices: finalNumbers.join(","),
+            };
+        });
+
+        try {
+            const res = await axios.post(`${Base_Url}/stock/create-bulk`, { stocks: payload }); // ✅ single API call
+            if (res.data.success) {
+                router.push("/admin");
+            }
+        } catch (error) {
+            console.log("Error creating bulk stocks", error);
+        }
+    };
+
     return (
         <div className="min-h-screen bg-[#01244a] text-white flex flex-col items-center p-6">
             <h1 className="text-xl font-bold mb-6">Enter Winning Numbers</h1>
@@ -152,12 +177,20 @@ const AddForm = () => {
                 </table>
             </div>
 
-            <button
-                onClick={handleSubmit}
-                className="mt-6 bg-yellow-400 text-black font-semibold px-6 py-2 rounded hover:bg-yellow-300"
-            >
-                Save Numbers
-            </button>
+            <div className="flex gap-4 mt-6">
+                <button
+                    onClick={handleSubmit}
+                    className="bg-yellow-400 text-black font-semibold px-6 py-2 rounded hover:bg-yellow-300"
+                >
+                    Save Numbers
+                </button>
+                <button
+                    onClick={handleAutoGenerate}
+                    className="bg-green-400 text-black font-semibold px-6 py-2 rounded hover:bg-green-300"
+                >
+                    Auto Generate
+                </button>
+            </div>
         </div>
     );
 };

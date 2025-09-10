@@ -1,7 +1,3 @@
-
-
-
-
 import { Plus, Pencil } from "lucide-react";
 import DatePicker from "@/components/DatePicker";
 import Link from "next/link";
@@ -21,8 +17,6 @@ const Dashboard = async ({
     const finalDate = moment(date, "YYYY-MM-DD", true).isValid() ? date : defaultDate;
 
     const slots: IStockInterface[] = await apiCall(`/stock/get-all-stocks?date=${finalDate}`);
-    const numbers: number[] = slots
-        .flatMap(slot => slot.stockPrices.split(',').map(price => Number(price)));
 
     return (
         <div className="min-h-screen bg-[#01244a] text-white p-6">
@@ -56,7 +50,8 @@ const Dashboard = async ({
 
                         {/* Numbers */}
                         <div className="grid grid-cols-5 gap-2 text-center">
-                            {numbers.map((num, i) => (
+                            {/* Split stockPrices string into an array and render each number */}
+                            {slot.stockPrices.split(',').map((num, i) => (
                                 <div
                                     key={i}
                                     className="bg-[#034078] rounded py-2 font-mono font-semibold text-sm"

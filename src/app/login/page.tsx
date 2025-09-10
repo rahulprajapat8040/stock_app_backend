@@ -24,7 +24,6 @@ const Login = () => {
             setErrorMsg(null);
 
             const res = await axios.post(`${Base_Url}/auth/login`, data);
-            console.log(res.data)
             if (res.data.success) {
                 Cookies.set("accessToken", res.data.data.accessToken);
                 router.push("/admin");
