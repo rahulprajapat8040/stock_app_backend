@@ -20,27 +20,24 @@ export default async function Home({
     : defaultDate;
 
   // --- Slot rounding logic ---
+  const nowIst = moment().utcOffset("+05:30");
+
   function getRoundedTime(current: moment.Moment): string {
     const hour = current.hour();
     const minute = current.minute();
 
     if (hour < 9) {
-      // Before 9 AM → snap to 09:00
       return "09:00";
     } else if (hour >= 9 && hour < 15) {
-      // Between 9 AM - 3 PM → 15 min slots
       const roundedMinute = Math.floor(minute / 15) * 15;
       return moment({ hour, minute: roundedMinute }).format("HH:mm");
     } else if (hour >= 15 && hour <= 21) {
-      // Between 3 PM - 9:20 PM → 20 min slots
       const roundedMinute = Math.floor(minute / 20) * 20;
       return moment({ hour, minute: roundedMinute }).format("HH:mm");
     } else {
-      // After 9:20 PM → snap to 21:20
       return "21:20";
     }
   }
-
   // Validate time, otherwise use rounded current slot
   const finalTime = time && moment(time, "HH:mm", true).isValid()
     ? time
