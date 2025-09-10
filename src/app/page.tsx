@@ -41,7 +41,7 @@ export default async function Home({
   // Validate time, otherwise use rounded current slot
   const finalTime = time && moment(time, "HH:mm", true).isValid()
     ? time
-    : getRoundedTime(now);
+    : getRoundedTime(nowIst);
 
   // Build API query
   const query = `/stock/get-stock-till-now?date=${finalDate}&time=${finalTime}`;
