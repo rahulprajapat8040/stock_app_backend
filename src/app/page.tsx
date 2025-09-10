@@ -51,7 +51,6 @@ export default async function Home({
   console.log(query)
   // Fetch slots
   const slots: IStockInterface[] = await apiCall(query);
-  console.log(slots)
 
   // List of dry days (MM-DD format)
   const dryDays = ["01-26", "08-15", "10-02"];
@@ -92,7 +91,7 @@ export default async function Home({
             <div className="ps-2 scale-[0.49] sm:scale-60 md:scale-75 lg:scale-90 xl:scale-100 origin-left w-[200%] sm:w-[167%] md:w-[133%] lg:w-[111%] xl:w-full">
               <div className="flex justify-between">
                 <div>
-                  <Link href={'/'} className="text-[12px] inline-block px-2 font-bold text-[#f2e70f]">Home</Link>
+                  <Link href={'/'} className="text inline-block px-2 font-bold text-[#f2e70f]">Home</Link>
                 </div>
                 <Link href={'/results-sheet'} className="flex justify-end text-[#f2e70f] font-bold">Results Sheet</Link>
               </div>

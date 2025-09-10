@@ -50,9 +50,7 @@ export default async function Home({
                     </span>
                 </div>
 
-                <div className="overflow px-1">
-                    <Link href={'/'} className="text-[12px] inline-block px-2 font-bold text-[#f2e70f]">Home</Link>
-
+                <div className="overflow  px-1">
                     {isDryDay ? (
                         // Dry Day Message
                         <div className="flex items-center justify-center mt-10 px-2">
@@ -64,28 +62,45 @@ export default async function Home({
                         </div>
                     ) : slots.length > 0 ? (
                         // Results Table
-                        <div className="ps-2 scale-[0.49] sm:scale-60 md:scale-75 lg:scale-90 xl:scale-100 origin-left w-[200%] sm:w-[167%] md:w-[133%] lg:w-[111%] xl:w-full">
-                            <table className="w-full text-[1.7rem] font-extrabold border-collapse border border-gray-400">
-                                <thead>
-                                    <tr className="bg-[#01244a]">
-                                        <th className="border-2 text-lg border-gray-400 px-2 font-bold whitespace-nowrap w-32" style={{ borderWidth: '3px', borderColor: '#9ca3af', borderStyle: 'solid' }}>Draw Time</th>
-                                        <th className="border-2 text-lg border-gray-400 px-2 font-bold" style={{ borderWidth: '3px', borderColor: '#9ca3af', borderStyle: 'solid' }}>Winning Numbers</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="bg-[#01244a]">
-                                    {slots.map((item) => (
-                                        <tr key={item.id}>
-                                            <td className="border-2 border-gray-400 px-2 whitespace-nowrap text-center" style={{ borderWidth: '3px', borderColor: '#9ca3af', borderStyle: 'solid' }}>
-                                                {moment(item.stockTime).format("hh:mm A")}
-                                            </td>
-                                            <td className="border-2 font-extrabold border-gray-400 px-2" style={{ borderWidth: '3px', borderColor: '#9ca3af', borderStyle: 'solid' }}>
-                                                {item.stockPrices}
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                        <div className="px-2 mt-4">
+                            <Link
+                                href="/"
+                                className="text-sm font-bold text-[#f2e70f] mb-2 inline-block"
+                            >
+                                Home
+                            </Link>
+
+                            <div className="overflow-x-auto flex justify-center">
+                                <div className="scale-[1] sm:scale-100 origin-top-left">
+                                    <table className="min-w-full text-xs sm:text-sm md:text-base font-bold border border-gray-400">
+                                        <thead>
+                                            <tr className="bg-[#01244a]">
+                                                <th className="border border-gray-400 px-2 py-2 whitespace-nowrap w-28">
+                                                    Draw Time
+                                                </th>
+                                                <th className="border border-gray-400 px-2 py-2">
+                                                    Winning Numbers
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="bg-[#01244a]">
+                                            {slots.map((item) => (
+                                                <tr key={item.id}>
+                                                    <td className="border border-gray-400 px-2 py-1 text-center whitespace-nowrap">
+                                                        {moment(item.stockTime).format("hh:mm A")}
+                                                    </td>
+                                                    <td className="border border-gray-400 px-2 py-1 whitespace-nowrap">
+                                                        {item.stockPrices}
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
+
+
                     ) : (
                         // No Result Fallback
                         <div className="flex items-center justify-center mt-10 px-2">
