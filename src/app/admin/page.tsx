@@ -6,6 +6,7 @@ import { IStockInterface } from "@/interfaces/stock.interface";
 import moment from "moment";
 import EyeButton from "@/components/EyeButton";
 import DeleteButton from "@/components/DeleteButton";
+import LogoutBtn from "@/components/LogoutBtn";
 
 const Dashboard = async ({
     searchParams,
@@ -41,9 +42,13 @@ const Dashboard = async ({
             {/* Header */}
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-xl font-bold">Winning Numbers</h1>
-                <Link href={'/admin/add'} className="flex items-center gap-2 bg-yellow-400 text-black font-semibold px-4 py-2 rounded hover:bg-yellow-300">
-                    <Plus size={18} /> Add
-                </Link>
+
+                <div className="flex items-center gap-3">
+                    <LogoutBtn />
+                    <Link href={'/admin/add'} className="flex items-center gap-2 bg-yellow-400 text-black font-semibold px-4 py-2 rounded hover:bg-yellow-300">
+                        <Plus size={18} /> Add
+                    </Link>
+                </div>
             </div>
 
             {/* Date Selector */}
