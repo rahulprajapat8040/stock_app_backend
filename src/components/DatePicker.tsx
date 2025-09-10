@@ -122,6 +122,7 @@ const DatePicker = ({ pageType }: { pageType: "admin" | "panel" | "results" }) =
                 </>
             )}
             {
+                pageType == 'admin' &&
                 <button
                     onClick={onResetClick}
                     className="bg-white border text-black border-gray-500 rounded px-3 text-sm"
