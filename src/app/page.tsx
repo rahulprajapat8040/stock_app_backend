@@ -12,11 +12,13 @@ export default async function Home({
   const { date } = await searchParams;
 
   // build final datetime with current time
-  const finalDate =
-    moment(date, "YYYY-MM-DD", true).isValid()
-      ? moment(`${date} ${moment().format("HH:mm:ss")}`, "YYYY-MM-DD HH:mm:ss").utc().toISOString()
-      : null;
-
+  const finalDate = moment(date, "YYYY-MM-DD", true).isValid()
+    ? moment(`${date} ${moment().format("HH:mm:ss")}`, "YYYY-MM-DD HH:mm:ss") // Append current time
+      .utc() // Convert to UTC
+      .add(5, 'hours') // Convert to IST by adding 5 hours
+      .add(30, 'minutes') // IST is UTC + 5:30
+      .toISOString() // Convert to ISO string in IST
+    : null;
   // List of dry days (MM-DD format for comparison)
   const dryDays = ["01-26", "08-15", "10-02"];
   const selectedDate = date ? moment(date, "YYYY-MM-DD") : moment();
@@ -25,6 +27,7 @@ export default async function Home({
   const isDryDay = dryDays.includes(selectedDate.format("MM-DD"));
 
   // Fetch slots only if not a dry day
+  console.log(finalDate)
   let slots: IStockInterface[] = [];
   if (!isDryDay && finalDate) {
     slots = await apiCall(`/stock/get-stock-till-now?date=${finalDate}`);
