@@ -195,17 +195,18 @@ const AddForm = () => {
 
             <div className="flex gap-4 mt-6 flex-wrap">
                 <button
+                    onClick={handleAutoGenerate}
+                    className="bg-green-400 text-black font-semibold px-6 py-2 rounded hover:bg-green-300"
+                >
+                    Auto Add
+                </button>
+                <button
                     onClick={handleSubmit}
                     className="bg-yellow-400 text-black font-semibold px-6 py-2 rounded hover:bg-yellow-300"
                 >
                     Save Numbers
                 </button>
-                <button
-                    onClick={handleAutoGenerate}
-                    className="bg-green-400 text-black font-semibold px-6 py-2 rounded hover:bg-green-300"
-                >
-                    Auto Generate
-                </button>
+
             </div>
         </div>
     );
