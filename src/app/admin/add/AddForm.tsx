@@ -193,7 +193,7 @@ const AddForm = () => {
                 </table>
             </div>
 
-            <div className="flex gap-4 mt-6">
+            <div className="flex gap-4 mt-6 flex-wrap">
                 <button
                     onClick={handleSubmit}
                     className="bg-yellow-400 text-black font-semibold px-6 py-2 rounded hover:bg-yellow-300"
