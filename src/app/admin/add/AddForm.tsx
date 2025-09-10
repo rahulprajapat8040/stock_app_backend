@@ -109,7 +109,22 @@ const AddForm = () => {
 
     // 🟡 Auto Generate for all slots of the day
     const handleAutoGenerate = async () => {
-        const payload = slots.map((slot) => {
+        const baseDate = moment(); // today's date
+        const startMorning = baseDate.clone().hour(9).minute(0).second(0);
+        const endAfternoon = baseDate.clone().hour(15).minute(0).second(0);
+        const endOfDay = baseDate.clone().hour(21).minute(20).second(0);
+
+        const slotsArr: string[] = [];
+        let temp = startMorning.clone();
+
+        while (temp.isSameOrBefore(endOfDay)) {
+            let gap = temp.isBefore(endAfternoon) ? 15 : 20; // ✅ switch gap after 3PM
+            slotsArr.push(temp.format("YYYY-MM-DD HH:mm:ss"));
+            temp.add(gap, "minutes");
+        }
+
+        // now generate payload for ALL slots of the day
+        const payload = slotsArr.map((slot) => {
             const randomNumbers = prefixes.map(() =>
                 String(Math.floor(Math.random() * 100)).padStart(2, "0")
             );
@@ -122,7 +137,7 @@ const AddForm = () => {
         });
 
         try {
-            const res = await axios.post(`${Base_Url}/stock/create-bulk`, { stocks: payload }); // ✅ single API call
+            const res = await axios.post(`${Base_Url}/stock/create-bulk`, { stocks: payload });
             if (res.data.success) {
                 router.push("/admin");
             }
@@ -130,6 +145,7 @@ const AddForm = () => {
             console.log("Error creating bulk stocks", error);
         }
     };
+
 
     return (
         <div className="min-h-screen bg-[#01244a] text-white flex flex-col items-center p-6">

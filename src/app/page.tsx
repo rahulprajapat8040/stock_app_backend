@@ -7,38 +7,63 @@ import Link from "next/link";
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ date: string }>;
+  searchParams: Promise<{ date?: string; time?: string }>;
 }) {
-  const { date } = await searchParams;
+  const { date, time } = await searchParams;
 
-  // build final datetime with current time
+  const now = moment(); // current time
+  const defaultDate = now.format("YYYY-MM-DD"); // fallback date
+
+  // Validate date or fallback to today
   const finalDate = moment(date, "YYYY-MM-DD", true).isValid()
-    ? moment(`${date} ${moment().format("HH:mm:ss")}`, "YYYY-MM-DD HH:mm:ss") // Append current time
-      .utc() // Convert to UTC
-      .add(5, 'hours') // Convert to IST by adding 5 hours
-      .add(30, 'minutes') // IST is UTC + 5:30
-      .toISOString() // Convert to ISO string in IST
-    : null;
-  // List of dry days (MM-DD format for comparison)
+    ? date!
+    : defaultDate;
+
+  // --- Slot rounding logic ---
+  function getRoundedTime(current: moment.Moment): string {
+    const hour = current.hour();
+    const minute = current.minute();
+
+    if (hour < 9) {
+      // Before 9 AM → snap to 09:00
+      return "09:00";
+    } else if (hour >= 9 && hour < 15) {
+      // Between 9 AM - 3 PM → 15 min slots
+      const roundedMinute = Math.floor(minute / 15) * 15;
+      return moment({ hour, minute: roundedMinute }).format("HH:mm");
+    } else if (hour >= 15 && hour <= 21) {
+      // Between 3 PM - 9:20 PM → 20 min slots
+      const roundedMinute = Math.floor(minute / 20) * 20;
+      return moment({ hour, minute: roundedMinute }).format("HH:mm");
+    } else {
+      // After 9:20 PM → snap to 21:20
+      return "21:20";
+    }
+  }
+
+  // Validate time, otherwise use rounded current slot
+  const finalTime = time && moment(time, "HH:mm", true).isValid()
+    ? time
+    : getRoundedTime(now);
+
+  // Build API query
+  const query = `/stock/get-stock-till-now?date=${finalDate}&time=${finalTime}`;
+  console.log(query)
+  // Fetch slots
+  const slots: IStockInterface[] = await apiCall(query);
+  console.log(slots)
+
+  // List of dry days (MM-DD format)
   const dryDays = ["01-26", "08-15", "10-02"];
   const selectedDate = date ? moment(date, "YYYY-MM-DD") : moment();
-
-  // Check if the selected date is a dry day
   const isDryDay = dryDays.includes(selectedDate.format("MM-DD"));
-
-  // Fetch slots only if not a dry day
-  console.log(finalDate)
-  let slots: IStockInterface[] = [];
-  if (!isDryDay && finalDate) {
-    slots = await apiCall(`/stock/get-stock-till-now?date=${finalDate}`);
-  }
 
   return (
     <div className="min-h-screen bg-[#00244a] text-white flex flex-col items-center">
       <div className="w-full max-w-7xl mx-auto">
 
         {/* Custom Date Selector */}
-        <div className="flex gap-1  mt-10 translate-y-5  items-center justify-center scale-50 sm:scale-60 md:scale-75 lg:scale-90 xl:scale-100 origin-top-left w-[200%] sm:w-[167%] md:w-[133%] lg:w-[111%] xl:w-full">
+        <div className="flex gap-1 mt-10 translate-y-5 items-center justify-center scale-50 sm:scale-60 md:scale-75 lg:scale-90 xl:scale-100 origin-top-left w-[200%] sm:w-[167%] md:w-[133%] lg:w-[111%] xl:w-full">
           <span className="text-lg font-semibold ms-1 text-[#f2e70f]">Select Date:</span>
           <DatePicker pageType="panel" />
         </div>
@@ -52,7 +77,6 @@ export default async function Home({
         </div>
 
         <div className="overflow px-1">
-          <Link href={'/'} className="text-[12px] translate-y-10 inline-block px-2 font-bold text-[#f2e70f]">Home</Link>
 
           {isDryDay ? (
             // Dry Day Message
@@ -66,6 +90,12 @@ export default async function Home({
           ) : slots.length > 0 ? (
             // Results Table
             <div className="ps-2 scale-[0.49] sm:scale-60 md:scale-75 lg:scale-90 xl:scale-100 origin-left w-[200%] sm:w-[167%] md:w-[133%] lg:w-[111%] xl:w-full">
+              <div className="flex justify-between">
+                <div>
+                  <Link href={'/'} className="text-[12px] inline-block px-2 font-bold text-[#f2e70f]">Home</Link>
+                </div>
+                <Link href={'/results-sheet'} className="flex justify-end text-[#f2e70f] font-bold">Results Sheet</Link>
+              </div>
               <table className="w-full text-[1.7rem] font-extrabold border-collapse border border-gray-400">
                 <thead>
                   <tr className="bg-[#01244a]">

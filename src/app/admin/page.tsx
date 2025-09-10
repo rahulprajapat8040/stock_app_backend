@@ -1,22 +1,40 @@
-import { Plus, Pencil } from "lucide-react";
+import { Plus, Pencil, Eye, EyeClosed } from "lucide-react";
 import DatePicker from "@/components/DatePicker";
 import Link from "next/link";
 import { apiCall } from "../CallApi";
 import { IStockInterface } from "@/interfaces/stock.interface";
 import moment from "moment";
+import EyeButton from "@/components/EyeButton";
+import DeleteButton from "@/components/DeleteButton";
 
 const Dashboard = async ({
     searchParams,
 }: {
-    searchParams: Promise<{ date: string }>;
+    searchParams: Promise<{ date: string, time: string }>;
 }) => {
-    const { date } = await searchParams;
+    const { date, time } = await searchParams;
 
-    const defaultDate = moment().format("YYYY-MM-DD"); // or use "2025-09-23" if hardcoded
+    const defaultDate = moment().format("YYYY-MM-DD"); // fallback to today
 
-    const finalDate = moment(date, "YYYY-MM-DD", true).isValid() ? date : defaultDate;
+    // Validate date
+    const finalDate = moment(date, "YYYY-MM-DD", true).isValid()
+        ? date!
+        : defaultDate;
 
-    const slots: IStockInterface[] = await apiCall(`/stock/get-all-stocks?date=${finalDate}`);
+    // Validate time (only if provided)
+    const finalTime =
+        time && moment(time, "HH:mm", true).isValid()
+            ? time
+            : undefined;
+
+    // Build query string
+    const query = finalTime
+        ? `/stock/get-all-stocks?date=${finalDate}&time=${finalTime}`
+        : `/stock/get-all-stocks?date=${finalDate}`;
+
+    // Call API
+    const slots: IStockInterface[] = await apiCall(query);
+
 
     return (
         <div className="min-h-screen bg-[#01244a] text-white p-6">
@@ -43,9 +61,13 @@ const Dashboard = async ({
                         {/* Slot Time */}
                         <div className="flex justify-between items-center mb-3">
                             <h2 className="text-lg font-semibold">{moment(slot.stockTime).format("hh:mm A")}</h2>
-                            <Link href={`/admin/add?stockId=${slot.id}`} className="flex items-center gap-1 text-sm bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-300">
-                                <Pencil size={14} /> Edit
-                            </Link>
+                            <div className="flex gap-2 items-center">
+                                <EyeButton stockId={slot.id} status={slot.isPublic} />
+                                <Link href={`/admin/add?stockId=${slot.id}`} className="flex items-center gap-1 text-sm bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-300">
+                                    <Pencil size={14} /> Edit
+                                </Link>
+                                <DeleteButton stockId={slot.id} />
+                            </div>
                         </div>
 
                         {/* Numbers */}
