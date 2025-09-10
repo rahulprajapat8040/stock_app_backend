@@ -20,7 +20,6 @@ export default async function Home({
     : defaultDate;
 
   // --- Slot rounding logic ---
-  const nowIst = moment().utcOffset("+05:30");
 
   function getRoundedTime(current: moment.Moment): string {
     const hour = current.hour();
@@ -30,18 +29,22 @@ export default async function Home({
       return "09:00";
     } else if (hour >= 9 && hour < 15) {
       const roundedMinute = Math.floor(minute / 15) * 15;
-      return moment({ hour, minute: roundedMinute }).format("HH:mm");
+      return current.clone().minute(roundedMinute).format("HH:mm");
     } else if (hour >= 15 && hour <= 21) {
       const roundedMinute = Math.floor(minute / 20) * 20;
-      return moment({ hour, minute: roundedMinute }).format("HH:mm");
+      return current.clone().minute(roundedMinute).format("HH:mm");
     } else {
       return "21:20";
     }
   }
-  // Validate time, otherwise use rounded current slot
+
+  const nowIst = moment().utcOffset("+05:30");
+
   const finalTime = time && moment(time, "HH:mm", true).isValid()
     ? time
     : getRoundedTime(nowIst);
+
+  console.log(finalTime); // Should be 21:20 if nowIst is 22:34
 
   // Build API query
   const query = `/stock/get-stock-till-now?date=${finalDate}&time=${finalTime}`;
