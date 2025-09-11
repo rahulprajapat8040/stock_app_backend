@@ -114,10 +114,11 @@ export default async function Home({
                       </td>
                       <td className="
   border border-gray-400 px-1 text-left
-  text-[11.5px]                            /* base <400px */
-  [@media(max-width:335px)]:text-[8px] /* <350px */
-  [@media(max-width:365px)]:text-[10.3px] /* <350px */
-  [@media(min-width:410px)]:text-[13px]   /* 410px+ */
+  text-[12.5px]                            /* base <400px */
+  [@media(max-width:385px)]:text-[11px] /* <350px */
+  [@media(max-width:345px)]:text-[9.5px] /* <350px */
+  [@media(max-width:365px)]:text-[10.6px] /* <350px */
+  [@media(min-width:410px)]:text-[13.5px]   /* 410px+ */
   sm:text-[16px]                          /* 640px+ */
   md:text-[14px]                          /* 768px+ */
 ">                        {item.stockPrices}
