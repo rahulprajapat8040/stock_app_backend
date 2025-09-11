@@ -42,7 +42,7 @@ export default async function Home({
                 </div>
 
                 {/* Date Display */}
-                <div className="flex text-xs ms-5 mt-2 sm:mt-7 sm:text-lg justify-center gap-1">
+                <div className="flex text-xs ms-10 mt-2 sm:mt-7 sm:text-lg justify-center gap-1">
                     <span>Result of Date :</span>
                     <span className="text-[#f2e70f] text-[10px] sm:text-lg mt-px">
                         {selectedDate.format("DD.MM.YYYY")}
