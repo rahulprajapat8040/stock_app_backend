@@ -84,16 +84,20 @@ export default async function Home({
                                                 <td className="border font-extrabold text-[11.5px] border-gray-400 ">
                                                     {moment(item.stockTime).format("hh:mm A")}
                                                 </td>
-                                                <td className="
-  border border-gray-400 px-1 text-left
-  text-[12.5px]                            /* base <400px */
-  [@media(max-width:385px)]:text-[11px] /* <350px */
-  [@media(max-width:345px)]:text-[9.5px] /* <350px */
-  [@media(max-width:365px)]:text-[10.6px] /* <350px */
-  [@media(min-width:410px)]:text-[13.5px]   /* 410px+ */
-  sm:text-[16px]                          /* 640px+ */
-  md:text-[14px]                          /* 768px+ */
-">
+                                                <td
+                                                    className="
+    border border-gray-400 px-1 text-left
+    text-[2.9vw]                        /* base for very small screens */
+    [@media(min-width:345px)]:text-[3.1vw]   /* >=345px */
+    [@media(min-width:385px)]:text-[3.2vw]   /* >=385px */
+    [@media(min-width:435px)]:text-[3.2vw]   /* >=435px */
+    [@media(min-width:450px)]:text-[3.2vw]   /* >=450px */
+    [@media(min-width:480px)]:text-[3.2vw]   /* >=480px */
+    sm:text-[3.2vw]                     /* >=640px */
+    md:text-[14px]                     /* >=768px */
+  "
+                                                >
+
                                                     {item.stockPrices}
                                                 </td>
                                             </tr>
