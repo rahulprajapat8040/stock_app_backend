@@ -48,7 +48,11 @@ export default async function Home({
                         {selectedDate.format("DD.MM.YYYY")}
                     </span>
                 </div>
-
+                <div className="w-full flex justify-between px-2">
+                    <div>
+                        <Link href={'/results-sheet'} className="text inline-block text-xs  font-bold text-[#f2e70f]">Home</Link>
+                    </div>
+                </div>
                 <div className="overflow  px-1">
                     {isDryDay ? (
                         // Dry Day Message
@@ -61,6 +65,7 @@ export default async function Home({
                         </div>
                     ) : slots.length > 0 ? (
                         <div className="w-full px-1 sm:px-4">
+
                             <div className="w-full">
                                 <table className="table-fixed w-full font-bold border border-gray-400 text-[clamp(9px,1.8vw,14px)]">
                                     <thead>
@@ -81,10 +86,11 @@ export default async function Home({
                                                 </td>
                                                 <td className="
   border border-gray-400 px-1 text-left
-  text-[11.5px]              /* base <400px */
-  [@media(min-width:410px)]:text-[13px]   /* 400px+ */
-  sm:text-[16px]           /* 640px+ */
-  md:text-[14px]           /* 768px+ */
+  text-[11.5px]                            /* base <400px */
+  [@media(max-width:365px)]:text-[10.3px] /* <350px */
+  [@media(min-width:410px)]:text-[13px]   /* 410px+ */
+  sm:text-[16px]                          /* 640px+ */
+  md:text-[14px]                          /* 768px+ */
 ">
                                                     {item.stockPrices}
                                                 </td>
@@ -97,7 +103,7 @@ export default async function Home({
 
                     ) : (
                         // No Result Fallback
-                        <div className="flex items-center justify-center mt-10 px-2">
+                        <div className="flex items-center justify-center px-2">
                             <div className="max-w-sm w-full p-4 bg-white">
                                 <div className="h-36 bg-red-800 flex items-center justify-center w-full">
                                     <h1 className="text-6xl fontBold">RESULTS</h1>

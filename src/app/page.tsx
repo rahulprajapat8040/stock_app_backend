@@ -98,10 +98,10 @@ export default async function Home({
               <table className="table-fixed w-full font-bold border border-gray-400 text-[clamp(9px,1.8vw,14px)]">
                 <thead>
                   <tr className="bg-[#01244a] text-center">
-                    <th className="border border-gray-400  py-2 w-14">
+                    <th className="border border-gray-400  w-14">
                       Draw Time
                     </th>
-                    <th className="border border-gray-400 px-1 py-2 text-center">
+                    <th className="border border-gray-400 px-1 text-center">
                       Winning Numbers
                     </th>
                   </tr>
@@ -114,12 +114,13 @@ export default async function Home({
                       </td>
                       <td className="
   border border-gray-400 px-1 text-left
-  text-[11px]              /* base <400px */
-  [@media(min-width:400px)]:text-[13px]   /* 400px+ */
-  sm:text-[16px]           /* 640px+ */
-  md:text-[14px]           /* 768px+ */
-">
-                        {item.stockPrices}
+  text-[11.5px]                            /* base <400px */
+  [@media(max-width:335px)]:text-[8px] /* <350px */
+  [@media(max-width:365px)]:text-[10.3px] /* <350px */
+  [@media(min-width:410px)]:text-[13px]   /* 410px+ */
+  sm:text-[16px]                          /* 640px+ */
+  md:text-[14px]                          /* 768px+ */
+">                        {item.stockPrices}
                       </td>
                     </tr>
                   ))}
