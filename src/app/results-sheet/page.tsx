@@ -50,7 +50,7 @@ export default async function Home({
                 </div>
                 <div className="w-full flex justify-between px-2">
                     <div>
-                        <Link href={'/results-sheet'} className="text inline-block text-xs  font-bold text-[#f2e70f]">Home</Link>
+                        <Link href={'/'} className="text inline-block text-xs  font-bold text-[#f2e70f]">Home</Link>
                     </div>
                 </div>
                 <div className="overflow  px-1">
