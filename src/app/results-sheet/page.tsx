@@ -31,7 +31,6 @@ export default async function Home({
     if (!isDryDay && finalDate) {
         slots = await apiCall(`/stock/get-stock-till-now?date=${finalDate}`);
     }
-
     return (
         <div className="min-h-screen bg-[#00244a] text-white flex flex-col items-center">
             <div className="w-full max-w-7xl mx-auto">
@@ -62,44 +61,34 @@ export default async function Home({
                         </div>
                     ) : slots.length > 0 ? (
                         // Results Table
-                        <div className="px-2 mt-4">
-                            <Link
-                                href="/"
-                                className="text-sm font-bold text-[#f2e70f] mb-2 inline-block"
-                            >
-                                Home
-                            </Link>
-
-                            <div className="overflow-x-auto flex justify-center">
-                                <div className="scale-[1] sm:scale-100 origin-top-left">
-                                    <table className="min-w-full text-xs sm:text-sm md:text-base font-bold border border-gray-400">
-                                        <thead>
-                                            <tr className="bg-[#01244a]">
-                                                <th className="border border-gray-400 px-2 py-2 whitespace-nowrap w-28">
-                                                    Draw Time
-                                                </th>
-                                                <th className="border border-gray-400 px-2 py-2">
-                                                    Winning Numbers
-                                                </th>
+                        <div className="flex justify-center overflow-x-auto">
+                            <div className="origin-top scale-90 sm:scale-90 md:scale-100">
+                                <table className="min-w-full font-bold border border-gray-400 text-xs sm:text-sm md:text-base text-center">
+                                    <thead>
+                                        <tr className="bg-[#01244a]">
+                                            <th className="border border-gray-400 px-2 py-2 whitespace-nowrap w-28">
+                                                Draw Time
+                                            </th>
+                                            <th className="border border-gray-400 px-2 py-2 whitespace-nowrap">
+                                                Winning Numbers
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-[#01244a]">
+                                        {slots.map((item) => (
+                                            <tr key={item.id}>
+                                                <td className="border border-gray-400 px-2 py-1 whitespace-nowrap">
+                                                    {moment(item.stockTime).format("hh:mm A")}
+                                                </td>
+                                                <td className="border border-gray-400 px-2 py-1 whitespace-nowrap">
+                                                    {item.stockPrices}
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <tbody className="bg-[#01244a]">
-                                            {slots.map((item) => (
-                                                <tr key={item.id}>
-                                                    <td className="border border-gray-400 px-2 py-1 text-center whitespace-nowrap">
-                                                        {moment(item.stockTime).format("hh:mm A")}
-                                                    </td>
-                                                    <td className="border border-gray-400 px-2 py-1 whitespace-nowrap">
-                                                        {item.stockPrices}
-                                                    </td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        ))}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-
 
                     ) : (
                         // No Result Fallback

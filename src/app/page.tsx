@@ -60,23 +60,28 @@ export default async function Home({
   return (
     <div className="min-h-screen bg-[#00244a] text-white flex flex-col items-center">
       <div className="w-full max-w-7xl mx-auto">
-
-        {/* Custom Date Selector */}
-        <div className="flex gap-1 mt-10 translate-y-5 items-center justify-center scale-50 sm:scale-60 md:scale-75 lg:scale-90 xl:scale-100 origin-top-left w-[200%] sm:w-[167%] md:w-[133%] lg:w-[111%] xl:w-full">
-          <span className="text-lg font-semibold ms-1 text-[#f2e70f]">Select Date:</span>
-          <DatePicker pageType="panel" />
-        </div>
-
-        {/* Date Display */}
-        <div className="flex text-xs ms-5 mt-2 sm:mt-7 sm:text-lg justify-center gap-1">
-          <span>Result of Date :</span>
-          <span className="text-[#f2e70f] text-[10px] sm:text-lg mt-px">
-            {selectedDate.format("DD.MM.YYYY")}
-          </span>
-        </div>
-
         <div className="overflow px-1">
+          {/* Custom Date Selector */}
+          <div className="flex gap-1 mt-10 translate-y-5 items-center justify-center scale-50 sm:scale-60 md:scale-75 lg:scale-90 xl:scale-100 origin-top-left w-[200%] sm:w-[167%] md:w-[133%] lg:w-[111%] xl:w-full">
+            <span className="text-lg font-semibold ms-1 text-[#f2e70f]">Select Date:</span>
+            <DatePicker pageType="panel" />
+          </div>
 
+          {/* Date Display */}
+          <div className="flex text-xs ms-5 mt-2 sm:mt-7 sm:text-lg justify-center gap-1">
+            <span>Result of Date :</span>
+            <span className="text-[#f2e70f] text-[10px] sm:text-lg mt-px">
+              {selectedDate.format("DD.MM.YYYY")}
+            </span>
+          </div>
+          <div className="flex justify-between translate-y-4">
+            <div>
+              <Link href={'/'} className="text inline-block text-xs px-2 font-bold text-[#f2e70f]">Home</Link>
+            </div>
+            <div>
+              <Link href={'/results-sheet'} className=" inline-block text-xs justify-end text-[#f2e70f] font-bold">Results Sheet</Link>
+            </div>
+          </div>
           {isDryDay ? (
             // Dry Day Message
             <div className="flex items-center justify-center mt-10 px-2">
@@ -88,33 +93,35 @@ export default async function Home({
             </div>
           ) : slots.length > 0 ? (
             // Results Table
-            <div className="ps-2 scale-[0.49] sm:scale-60 md:scale-75 lg:scale-90 xl:scale-100 origin-left w-[200%] sm:w-[167%] md:w-[133%] lg:w-[111%] xl:w-full">
-              <div className="flex justify-between">
-                <div>
-                  <Link href={'/'} className="text inline-block px-2 font-bold text-[#f2e70f]">Home</Link>
-                </div>
-                <Link href={'/results-sheet'} className="flex justify-end text-[#f2e70f] font-bold">Results Sheet</Link>
-              </div>
-              <table className="w-full text-[1.7rem] font-extrabold border-collapse border border-gray-400">
-                <thead>
-                  <tr className="bg-[#01244a]">
-                    <th className="border-2 text-lg border-gray-400 px-2 font-bold whitespace-nowrap w-32" style={{ borderWidth: '3px', borderColor: '#9ca3af', borderStyle: 'solid' }}>Draw Time</th>
-                    <th className="border-2 text-lg border-gray-400 px-2 font-bold" style={{ borderWidth: '3px', borderColor: '#9ca3af', borderStyle: 'solid' }}>Winning Numbers</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-[#01244a]">
-                  {slots.map((item) => (
-                    <tr key={item.id}>
-                      <td className="border-2 border-gray-400 px-2 whitespace-nowrap text-center" style={{ borderWidth: '3px', borderColor: '#9ca3af', borderStyle: 'solid' }}>
-                        {moment(item.stockTime).format("hh:mm A")}
-                      </td>
-                      <td className="border-2 font-extrabold border-gray-400 px-2" style={{ borderWidth: '3px', borderColor: '#9ca3af', borderStyle: 'solid' }}>
-                        {item.stockPrices}
-                      </td>
+
+            <div className="flex mt-4 justify-center overflow-x-auto">
+
+              <div className="origin-top scale-90 sm:scale-90 md:scale-100">
+                <table className="min-w-full font-bold border border-gray-400 text-xs sm:text-sm md:text-base text-center">
+                  <thead>
+                    <tr className="bg-[#01244a]">
+                      <th className="border border-gray-400 px-2 py-2 whitespace-nowrap w-28">
+                        Draw Time
+                      </th>
+                      <th className="border border-gray-400 px-2 py-2 whitespace-nowrap">
+                        Winning Numbers
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="bg-[#01244a]">
+                    {slots.map((item) => (
+                      <tr key={item.id}>
+                        <td className="border border-gray-400 px-2 py-1 whitespace-nowrap">
+                          {moment(item.stockTime).format("hh:mm A")}
+                        </td>
+                        <td className="border border-gray-400 px-2 py-1 whitespace-nowrap">
+                          {item.stockPrices}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           ) : (
             // No Result Fallback
