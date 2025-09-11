@@ -74,14 +74,7 @@ export default async function Home({
               {selectedDate.format("DD.MM.YYYY")}
             </span>
           </div>
-          <div className="flex justify-between translate-y-4">
-            <div>
-              <Link href={'/'} className="text inline-block text-xs px-2 font-bold text-[#f2e70f]">Home</Link>
-            </div>
-            <div>
-              <Link href={'/results-sheet'} className=" inline-block text-xs justify-end text-[#f2e70f] font-bold">Results Sheet</Link>
-            </div>
-          </div>
+
           {isDryDay ? (
             // Dry Day Message
             <div className="flex items-center justify-center mt-10 px-2">
@@ -96,7 +89,15 @@ export default async function Home({
 
             <div className="flex mt-4 justify-center overflow-x-auto">
 
-              <div className="origin-top scale-90 sm:scale-90 md:scale-100">
+              <div className="origin-top scale-95 sm:scale-90 md:scale-100">
+                <div className="flex justify-between max-w-sm mx-auto s:max-w-full">
+                  <div>
+                    <Link href={'/'} className="text inline-block text-xs  font-bold text-[#f2e70f]">Home</Link>
+                  </div>
+                  <div>
+                    <Link href={'/results-sheet'} className=" inline-block text-xs justify-end text-[#f2e70f] font-bold">Results Sheet</Link>
+                  </div>
+                </div>
                 <table className="min-w-full font-bold border border-gray-400 text-xs sm:text-sm md:text-base text-center">
                   <thead>
                     <tr className="bg-[#01244a]">

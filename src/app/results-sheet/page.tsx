@@ -62,7 +62,7 @@ export default async function Home({
                     ) : slots.length > 0 ? (
                         // Results Table
                         <div className="flex justify-center overflow-x-auto">
-                            <div className="origin-top scale-90 sm:scale-90 md:scale-100">
+                            <div className="origin-top scale-95 sm:scale-90 md:scale-100">
                                 <table className="min-w-full font-bold border border-gray-400 text-xs sm:text-sm md:text-base text-center">
                                     <thead>
                                         <tr className="bg-[#01244a]">
