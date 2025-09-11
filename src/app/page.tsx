@@ -32,9 +32,16 @@ export default async function Home({
       return current.clone().minute(roundedMinute).format("HH:mm");
     } else if (hour >= 15 && hour <= 21) {
       const roundedMinute = Math.floor(minute / 20) * 20;
-      return current.clone().minute(roundedMinute).format("HH:mm");
+      const candidate = current.clone().minute(roundedMinute).format("HH:mm");
+
+      // Cap at 21:20 max
+      if (current.isAfter(moment(current).hour(21).minute(20))) {
+        return "21:20";
+      }
+
+      return candidate;
     } else {
-      return "21:20";
+      return "21:20"; // After 9:20pm, always return 21:20
     }
   }
 
