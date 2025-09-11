@@ -86,36 +86,26 @@ export default async function Home({
             </div>
           ) : slots.length > 0 ? (
             // Results Table
-
-            <div className="flex mt-4 justify-center overflow-x-auto">
-
-              <div className="origin-top scale-95 sm:scale-90 md:scale-100">
-                <div className="flex justify-between max-w-sm mx-auto s:max-w-full">
-                  <div>
-                    <Link href={'/'} className="text inline-block text-xs  font-bold text-[#f2e70f]">Home</Link>
-                  </div>
-                  <div>
-                    <Link href={'/results-sheet'} className=" inline-block text-xs justify-end text-[#f2e70f] font-bold">Results Sheet</Link>
-                  </div>
-                </div>
-                <table className="min-w-full font-bold border border-gray-400 text-xs sm:text-sm md:text-base text-center">
+            <div className="w-full px-1 sm:px-4">
+              <div className="w-full">
+                <table className="table-fixed w-full font-bold border border-gray-400 text-[clamp(8px,1.8vw,14px)]">
                   <thead>
-                    <tr className="bg-[#01244a]">
-                      <th className="border border-gray-400 px-2 py-2 whitespace-nowrap w-28">
+                    <tr className="bg-[#01244a] text-center">
+                      <th className="border border-gray-400  py-2 w-14">
                         Draw Time
                       </th>
-                      <th className="border border-gray-400 px-2 py-2 whitespace-nowrap">
+                      <th className="border border-gray-400 px-1 py-2 text-center">
                         Winning Numbers
                       </th>
                     </tr>
                   </thead>
                   <tbody className="bg-[#01244a]">
                     {slots.map((item) => (
-                      <tr key={item.id}>
-                        <td className="border border-gray-400 px-2 py-1 whitespace-nowrap">
+                      <tr key={item.id} className="border text-center">
+                        <td className="border font-extrabold border-gray-400 ">
                           {moment(item.stockTime).format("hh:mm A")}
                         </td>
-                        <td className="border border-gray-400 px-2 py-1 whitespace-nowrap">
+                        <td className="border border-gray-400 px-1 whitespace-nowrap text-[clamp(10px,1.6vw,13px)] text-left">
                           {item.stockPrices}
                         </td>
                       </tr>
