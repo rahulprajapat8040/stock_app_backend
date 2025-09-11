@@ -87,32 +87,44 @@ export default async function Home({
           ) : slots.length > 0 ? (
             // Results Table
             <div className="w-full px-1 sm:px-4">
-              <div className="w-full">
-                <table className="table-fixed w-full font-bold border border-gray-400 text-[clamp(8px,1.8vw,14px)]">
-                  <thead>
-                    <tr className="bg-[#01244a] text-center">
-                      <th className="border border-gray-400  py-2 w-14">
-                        Draw Time
-                      </th>
-                      <th className="border border-gray-400 px-1 py-2 text-center">
-                        Winning Numbers
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-[#01244a]">
-                    {slots.map((item) => (
-                      <tr key={item.id} className="border text-center">
-                        <td className="border font-extrabold border-gray-400 ">
-                          {moment(item.stockTime).format("hh:mm A")}
-                        </td>
-                        <td className="border border-gray-400 px-1 whitespace-nowrap text-[clamp(10px,1.6vw,13px)] text-left">
-                          {item.stockPrices}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div className="w-full flex justify-between">
+                <div>
+                  <Link href={'/'} className="text inline-block text-xs  font-bold text-[#f2e70f]">Home</Link>
+                </div>
+                <div>
+                  <Link href={'/results-sheet'} className=" inline-block text-xs justify-end text-[#f2e70f] font-bold">Results Sheet</Link>
+                </div>
               </div>
+              <table className="table-fixed w-full font-bold border border-gray-400 text-[clamp(9px,1.8vw,14px)]">
+                <thead>
+                  <tr className="bg-[#01244a] text-center">
+                    <th className="border border-gray-400  py-2 w-14">
+                      Draw Time
+                    </th>
+                    <th className="border border-gray-400 px-1 py-2 text-center">
+                      Winning Numbers
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-[#01244a]">
+                  {slots.map((item) => (
+                    <tr key={item.id} className="border text-center">
+                      <td className="border font-extrabold text-[11.5px] border-gray-400 ">
+                        {moment(item.stockTime).format("hh:mm A")}
+                      </td>
+                      <td className="
+  border border-gray-400 px-1 text-left
+  text-[12px]              /* base <400px */
+  [@media(min-width:400px)]:text-[13px]   /* 400px+ */
+  sm:text-[16px]           /* 640px+ */
+  md:text-[14px]           /* 768px+ */
+">
+                        {item.stockPrices}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           ) : (
             // No Result Fallback
@@ -126,6 +138,6 @@ export default async function Home({
           )}
         </div>
       </div>
-    </div>
+    </div >
   );
 }

@@ -62,13 +62,13 @@ export default async function Home({
                     ) : slots.length > 0 ? (
                         <div className="w-full px-1 sm:px-4">
                             <div className="w-full">
-                                <table className="table-fixed w-full font-bold border border-gray-400 text-[clamp(8px,1.8vw,14px)]">
+                                <table className="table-fixed w-full font-bold border border-gray-400 text-[clamp(9px,1.8vw,14px)]">
                                     <thead>
                                         <tr className="bg-[#01244a] text-center">
-                                            <th className="border border-gray-400  py-2 w-14">
+                                            <th className="border border-gray-400  w-14">
                                                 Draw Time
                                             </th>
-                                            <th className="border border-gray-400 px-1 py-2 text-center">
+                                            <th className="border border-gray-400 px-1 text-center">
                                                 Winning Numbers
                                             </th>
                                         </tr>
@@ -76,10 +76,16 @@ export default async function Home({
                                     <tbody className="bg-[#01244a]">
                                         {slots.map((item) => (
                                             <tr key={item.id} className="border text-center">
-                                                <td className="border font-extrabold border-gray-400 ">
+                                                <td className="border font-extrabold text-[11.5px] border-gray-400 ">
                                                     {moment(item.stockTime).format("hh:mm A")}
                                                 </td>
-                                                <td className="border border-gray-400 px-1 whitespace-nowrap text-[clamp(10px,1.6vw,13px)] text-left">
+                                                <td className="
+  border border-gray-400 px-1 text-left
+  text-[12px]              /* base <400px */
+  [@media(min-width:400px)]:text-[13px]   /* 400px+ */
+  sm:text-[16px]           /* 640px+ */
+  md:text-[14px]           /* 768px+ */
+">
                                                     {item.stockPrices}
                                                 </td>
                                             </tr>
