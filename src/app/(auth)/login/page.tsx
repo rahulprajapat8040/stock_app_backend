@@ -6,6 +6,7 @@ import axios from "axios";
 import { Base_Url } from "@/utils/constans";
 import { useRouter } from "next/navigation";
 import Cookies from 'js-cookie'
+import Link from "next/link";
 
 type LoginFormInputs = {
     email: string;
@@ -79,6 +80,9 @@ const Login = () => {
                         {errors.password && (
                             <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>
                         )}
+                    </div>
+                    <div>
+                        <span>Forgot your passowrd? <Link href={'/password-reset'} className="underline">click here</Link></span>
                     </div>
 
                     {/* Submit */}
