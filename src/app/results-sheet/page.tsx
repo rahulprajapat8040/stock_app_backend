@@ -12,7 +12,6 @@ export default async function Home({
     const { date } = await searchParams;
 
     const today = moment().format("YYYY-MM-DD");
-    console.log(today)
 
     // ✅ Decide time based on whether the date is today
     let finalDate: string | null = null;
@@ -35,6 +34,7 @@ export default async function Home({
                 .toISOString();
         }
     }
+    console.log('final date', finalDate)
 
     // List of dry days (MM-DD format for comparison)
     const dryDays = ["01-26", "08-15", "10-02"];
