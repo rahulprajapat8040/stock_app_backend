@@ -26,15 +26,16 @@ export default async function Home({
                 .toISOString();
         } else {
             // If not today → use fixed 09:40
-            console.log('called')
-            finalDate = moment(`${date} 21:40:00`, "YYYY-MM-DD HH:mm:ss")
+            finalDate = moment(`${date} 16:10:00`, "YYYY-MM-DD HH:mm:ss")
                 .utc()
                 .add(5, "hours")
                 .add(30, "minutes")
                 .toISOString();
         }
     }
-    console.log('final date', finalDate)
+
+    console.log(finalDate)
+
 
     // List of dry days (MM-DD format for comparison)
     const dryDays = ["01-26", "08-15", "10-02"];
@@ -44,7 +45,6 @@ export default async function Home({
     const isDryDay = dryDays.includes(selectedDate.format("MM-DD"));
 
     // Fetch slots only if not a dry day
-    console.log(finalDate)
     let slots: IStockInterface[] = [];
     if (!isDryDay && finalDate) {
         slots = await apiCall(`/stock/get-stock-till-now?date=${finalDate}`);
