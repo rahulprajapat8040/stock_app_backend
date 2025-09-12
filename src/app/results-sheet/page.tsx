@@ -26,7 +26,7 @@ export default async function Home({
                 .toISOString();
         } else {
             // If not today → use fixed 09:40
-            finalDate = moment(`${date} 09:40:00`, "YYYY-MM-DD HH:mm:ss")
+            finalDate = moment(`${date} 16:10:00`, "YYYY-MM-DD HH:mm:ss")
                 .utc()
                 .add(5, "hours")
                 .add(30, "minutes")
