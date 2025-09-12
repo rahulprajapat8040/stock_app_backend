@@ -85,7 +85,7 @@ export default async function Home({
                         <div className="w-full px-1 sm:px-4">
 
                             <div className="w-full">
-                                <table className="table-fixed w-full font-bold border border-gray-400 text-[clamp(9px,1.8vw,14px)]">
+                                <table className="table-fixed pb-3 w-full font-bold border border-gray-400 text-[clamp(9px,1.8vw,14px)]">
                                     <thead>
                                         <tr className="bg-[#01244a] text-center">
                                             <th className="border border-gray-400  w-14">
