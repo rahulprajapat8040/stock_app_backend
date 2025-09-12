@@ -1,8 +1,8 @@
 // utils/api.ts
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-export const Base_Url = `http://localhost:4505`
-// export const Base_Url = `https://api.playgolddwin.com`
+// export const Base_Url = `http://localhost:4505`
+export const Base_Url = `https://api.playgolddwin.com`
 
 interface ApiCallOptions {
     method?: HttpMethod;
