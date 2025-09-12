@@ -12,6 +12,7 @@ export default async function Home({
     const { date } = await searchParams;
 
     const today = moment().format("YYYY-MM-DD");
+    console.log(today)
 
     // ✅ Decide time based on whether the date is today
     let finalDate: string | null = null;
@@ -26,7 +27,8 @@ export default async function Home({
                 .toISOString();
         } else {
             // If not today → use fixed 09:40
-            finalDate = moment(`${date} 09:40:00`, "YYYY-MM-DD HH:mm:ss")
+            console.log('called')
+            finalDate = moment(`${date} 21:40:00`, "YYYY-MM-DD HH:mm:ss")
                 .utc()
                 .add(5, "hours")
                 .add(30, "minutes")
@@ -42,6 +44,7 @@ export default async function Home({
     const isDryDay = dryDays.includes(selectedDate.format("MM-DD"));
 
     // Fetch slots only if not a dry day
+    console.log(finalDate)
     let slots: IStockInterface[] = [];
     if (!isDryDay && finalDate) {
         slots = await apiCall(`/stock/get-stock-till-now?date=${finalDate}`);
