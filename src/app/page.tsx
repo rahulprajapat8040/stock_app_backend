@@ -3,7 +3,7 @@ import { IStockInterface } from "@/interfaces/stock.interface";
 import moment from 'moment';
 import { apiCall } from "./CallApi";
 import Link from "next/link";
-
+import { redirect } from "next/navigation";
 export default async function Home({
   searchParams,
 }: {
@@ -12,6 +12,7 @@ export default async function Home({
   const { date, time } = await searchParams;
 
   const now = moment(); // current time
+
   const defaultDate = now.format("YYYY-MM-DD"); // fallback date
 
   // Validate date or fallback to today
@@ -67,6 +68,7 @@ export default async function Home({
   return (
     <div className="min-h-screen bg-[#00244a] text-white flex flex-col items-center">
       <div className="w-full max-w-7xl mx-auto">
+
         <div className="overflow px-1">
           {/* Custom Date Selector */}
           <div className="flex gap-1 mt-10 translate-y-5 items-center justify-center scale-50 sm:scale-60 md:scale-75 lg:scale-90 xl:scale-100 origin-top-left w-[200%] sm:w-[167%] md:w-[133%] lg:w-[111%] xl:w-full">
@@ -91,7 +93,7 @@ export default async function Home({
                 </div>
               </div>
             </div>
-          ) : slots.length > 0 ? (
+          ) : (
             // Results Table
             <div className="w-full px-1 sm:px-4">
               <div className="w-full flex justify-between">
@@ -102,25 +104,27 @@ export default async function Home({
                   <Link href={'/results-sheet'} className=" inline-block text-xs justify-end text-[#f2e70f] font-bold">Results Sheet</Link>
                 </div>
               </div>
-              <table className="table-fixed w-full font-bold border border-gray-400 text-[clamp(9px,1.8vw,14px)]">
-                <thead>
-                  <tr className="bg-[#01244a] text-center">
-                    <th className="border border-gray-400  w-14">
-                      Draw Time
-                    </th>
-                    <th className="border border-gray-400 px-1 text-center">
-                      Winning Numbers
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-[#01244a]">
-                  {slots.map((item) => (
-                    <tr key={item.id} className="border text-center">
-                      <td className="border font-extrabold text-[11.5px] border-gray-400 ">
-                        {moment(item.stockTime).format("hh:mm A")}
-                      </td>
-                      <td
-                        className="
+              {
+                slots.length > 0 ? (
+                  <table className="table-fixed w-full font-bold border border-gray-400 text-[clamp(9px,1.8vw,14px)]">
+                    <thead>
+                      <tr className="bg-[#01244a] text-center">
+                        <th className="border border-gray-400  w-14">
+                          Draw Time
+                        </th>
+                        <th className="border border-gray-400 px-1 text-center">
+                          Winning Numbers
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-[#01244a]">
+                      {slots.map((item) => (
+                        <tr key={item.id} className="border text-center">
+                          <td className="border font-extrabold text-[11.5px] border-gray-400 ">
+                            {moment(item.stockTime).format("hh:mm A")}
+                          </td>
+                          <td
+                            className="
     border border-gray-400 px-1 text-left
     text-[2.9vw]                        /* base for very small screens */
     [@media(min-width:345px)]:text-[3.1vw]   /* >=345px */
@@ -131,22 +135,21 @@ export default async function Home({
     sm:text-[3.2vw]                     /* >=640px */
     md:text-[14px]                     /* >=768px */
   "
-                      >
-                        {item.stockPrices}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            // No Result Fallback
-            <div className="flex items-center justify-center mt-10 px-2">
-              <div className="max-w-sm w-full p-4 bg-white">
-                <div className="h-36 bg-red-800 flex items-center justify-center w-full">
-                  <h1 className="text-6xl fontBold">RESULTS</h1>
+                          >
+                            {item.stockPrices}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                ) : <div className="flex items-center justify-center">
+                  <div className="w-full p-4 bg-white">
+                    <div className="h-36 bg-red-800 flex items-center justify-center w-full">
+                      <h1 className="text-[3.5rem] fontBold">RESULTS</h1>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              }
             </div>
           )}
         </div>

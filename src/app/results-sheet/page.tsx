@@ -11,14 +11,29 @@ export default async function Home({
 }) {
     const { date } = await searchParams;
 
-    // build final datetime with current time
-    const finalDate = moment(date, "YYYY-MM-DD", true).isValid()
-        ? moment(`${date} ${moment().format("HH:mm:ss")}`, "YYYY-MM-DD HH:mm:ss") // Append current time
-            .utc() // Convert to UTC
-            .add(5, 'hours') // Convert to IST by adding 5 hours
-            .add(30, 'minutes') // IST is UTC + 5:30
-            .toISOString() // Convert to ISO string in IST
-        : null;
+    const today = moment().format("YYYY-MM-DD");
+
+    // ✅ Decide time based on whether the date is today
+    let finalDate: string | null = null;
+
+    if (moment(date, "YYYY-MM-DD", true).isValid()) {
+        if (date === today) {
+            // If today → use current time
+            finalDate = moment(`${date} ${moment().format("HH:mm:ss")}`, "YYYY-MM-DD HH:mm:ss")
+                .utc()
+                .add(5, "hours")
+                .add(30, "minutes")
+                .toISOString();
+        } else {
+            // If not today → use fixed 09:40
+            finalDate = moment(`${date} 09:40:00`, "YYYY-MM-DD HH:mm:ss")
+                .utc()
+                .add(5, "hours")
+                .add(30, "minutes")
+                .toISOString();
+        }
+    }
+
     // List of dry days (MM-DD format for comparison)
     const dryDays = ["01-26", "08-15", "10-02"];
     const selectedDate = date ? moment(date, "YYYY-MM-DD") : moment();
