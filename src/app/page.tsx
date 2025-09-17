@@ -7,7 +7,7 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,",
+  title: "Welcome to Play Gold Win",
   description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
   keywords: ["PlayGoldWin lottery results", "playgoldwin", "playgoldwin1", "PlayGolden", "Play GoldWin", "Play Gold Win", "PlayGoldWin", "PlayGolddWin", "PlayGolddWin", "PlayGoldWin", "PlayGoldWin",],
   robots: { index: true, follow: true },
@@ -74,11 +74,9 @@ export default async function Home({
     ? time
     : getRoundedTime(nowIst);
 
-  console.log(finalTime); // Should be 21:20 if nowIst is 22:34
 
   // Build API query
   const query = `/stock/get-stock-till-now?date=${finalDate}&time=${finalTime}`;
-  console.log(query)
   // Fetch slots
   const slots: IStockInterface[] = await apiCall(query);
 
@@ -99,12 +97,12 @@ export default async function Home({
           </div>
 
           {/* Date Display */}
-          <div className="flex text-xs ms-10 mt-2 sm:mt-7 sm:text-lg justify-center gap-1">
+          <h1 className="flex text-xs ms-10 mt-2 sm:mt-7 sm:text-lg justify-center gap-1">
             <span>Result of Date :</span>
             <span className="text-[#f2e70f] text-[10px] sm:text-lg mt-px">
               {selectedDate.format("DD.MM.YYYY")}
             </span>
-          </div>
+          </h1>
 
           {isDryDay ? (
             // Dry Day Message

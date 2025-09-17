@@ -54,9 +54,6 @@ export default async function Home({
         }
     }
 
-    console.log(finalDate)
-
-
     // List of dry days (MM-DD format for comparison)
     const dryDays = ["01-26", "08-15", "10-02"];
     const selectedDate = date ? moment(date, "YYYY-MM-DD") : moment();
@@ -80,12 +77,12 @@ export default async function Home({
                 </div>
 
                 {/* Date Display */}
-                <div className="flex text-xs ms-10 mt-2 sm:mt-7 sm:text-lg justify-center gap-1">
+                <h1 className="flex text-xs ms-10 mt-2 sm:mt-7 sm:text-lg justify-center gap-1">
                     <span>Result of Date :</span>
                     <span className="text-[#f2e70f] text-[10px] sm:text-lg mt-px">
                         {selectedDate.format("DD.MM.YYYY")}
                     </span>
-                </div>
+                </h1>
                 <div className="w-full flex justify-between px-2">
                     <div>
                         <Link href={'/'} className="text inline-block text-xs  font-bold text-[#f2e70f]">Home</Link>
