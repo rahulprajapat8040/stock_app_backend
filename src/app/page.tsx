@@ -3,7 +3,27 @@ import { IStockInterface } from "@/interfaces/stock.interface";
 import moment from 'moment';
 import { apiCall } from "./CallApi";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,",
+  description: "Play gold win, see your number result here with play gold win. play gold win",
+  keywords: ["PlayGoldWin", "Play Gold Win", "PlayGoldWin", "PlayGold Win", "Play GoldWin", "Play Gold Win", "PlayGoldWin", "PlayGolddWin", "PlayGolddWin", "PlayGoldWin", "PlayGoldWin",],
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "playgoldwin",
+    type: "website",
+    url: "https://playgolddwin.com",
+    description: "play gold win, see you number result, price"
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@playgoldwin",
+    creator: "@playgoldwin"
+  }
+}
+
 export default async function Home({
   searchParams,
 }: {

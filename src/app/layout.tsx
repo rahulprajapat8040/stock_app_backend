@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Play Gold Win",
-  description: "Play gold win, see your number result here with play gold win. play gold win white",
-  keywords: ["play gold win", "playgoldwin", "playgolddwin", "playgoldwinwhite", "playgoldwinn", "playgoldwinss"],
+  description: "Play gold win, see your number result here with play gold win. play gold win",
+  keywords: ["PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin",],
   robots: { index: true, follow: true },
   openGraph: {
     title: "playgoldwin",
