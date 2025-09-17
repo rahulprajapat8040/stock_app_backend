@@ -7,9 +7,10 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "Welcome to Play Gold Win",
+  title: "PlayGoldWin – Latest Lottery Results",
   description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
-  keywords: ["PlayGoldWin lottery results", "playgoldwin", "playgoldwin1", "PlayGolden", "Play GoldWin", "Play Gold Win", "PlayGoldWin", "PlayGolddWin", "PlayGolddWin", "PlayGoldWin", "PlayGoldWin",],
+  keywords: ["PlayGoldWin", "lottery results", "daily draw", "winning numbers"],
+  abstract: "PlayGoldWin provides accurate daily lottery results and draw timings.",
   robots: { index: true, follow: true },
   openGraph: {
     title: "playgoldwin",
@@ -23,7 +24,6 @@ export const metadata: Metadata = {
     creator: "@playgoldwin",
     description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
   },
-  abstract: "PlayGoldWin,Play Gold Win,PlayGold,PlayGolden,PlayGoldenWin,Golden,GoldenWin"
 }
 
 export default async function Home({
@@ -98,11 +98,19 @@ export default async function Home({
 
           {/* Date Display */}
           <h1 className="flex text-xs ms-10 mt-2 sm:mt-7 sm:text-lg justify-center gap-1">
+            <span style={{ position: "absolute", left: "-9999px" }}>PlayGoldWin Lottery Results</span>
             <span>Result of Date :</span>
             <span className="text-[#f2e70f] text-[10px] sm:text-lg mt-px">
               {selectedDate.format("DD.MM.YYYY")}
             </span>
           </h1>
+          <p style={{ position: "absolute", left: "-9999px" }}>
+            PlayGoldWin provides daily lottery results with accurate timing and easy access. Select your date to view the latest draw outcomes. Fast, simple, and reliable.
+          </p>
+          <div style={{ position: "absolute", left: "-9999px" }} className="text-center mt-4">
+            <Link href="/about" className="text-xs text-[#f2e70f] mx-2">About</Link>
+            <Link href="/results-sheet" className="text-xs text-[#f2e70f] mx-2">Results Sheet</Link>
+          </div>
 
           {isDryDay ? (
             // Dry Day Message
@@ -174,6 +182,15 @@ export default async function Home({
           )}
         </div>
       </div>
+      <p style={{ position: "absolute", left: "-9999px" }}>
+        Welcome to PlayGoldWin, your trusted destination for accurate and timely lottery results. Whether you're checking today's draw or reviewing past outcomes, PlayGoldWin ensures you have access to the most up-to-date information. Our platform is designed to be fast, reliable, and easy to use—so you can focus on what matters most: your numbers and your chances.
+
+        Each day, we publish verified results from multiple draws, helping users stay informed and confident. Our intuitive interface allows you to select the date and time of interest, view winning numbers, and explore historical data. We understand how important transparency is, which is why PlayGoldWin is committed to delivering results with precision and clarity.
+
+        In addition to results, we offer insights into draw timings, dry days, and slot patterns to help you plan ahead. Whether you're a casual player or a regular participant, PlayGoldWin is here to support your journey with dependable updates and a user-friendly experience.
+
+        Explore our Results Sheet, learn more about our platform, and stay connected for future enhancements. With PlayGoldWin, you're not just checking numbers—you're part of a growing community that values fairness, speed, and simplicity.
+      </p>
     </div >
   );
 }

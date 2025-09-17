@@ -83,6 +83,7 @@ export default async function Home({
                         {selectedDate.format("DD.MM.YYYY")}
                     </span>
                 </h1>
+                
                 <div className="w-full flex justify-between px-2">
                     <div>
                         <Link href={'/'} className="text inline-block text-xs  font-bold text-[#f2e70f]">Home</Link>

@@ -14,9 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Welcome to Play Gold Win",
+  title: "PlayGoldWin – Latest Lottery Results",
   description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
-  keywords: ["PlayGoldWin lottery results", "playgoldwin", "playgoldwin1", "PlayGolden", "Play GoldWin", "Play Gold Win", "PlayGoldWin", "PlayGolddWin", "PlayGolddWin", "PlayGoldWin", "PlayGoldWin",],
+  keywords: ["PlayGoldWin", "lottery results", "daily draw", "winning numbers"],
+  abstract: "PlayGoldWin provides accurate daily lottery results and draw timings.",
   openGraph: {
     title: "playgoldwin",
     type: "website",
@@ -29,7 +30,6 @@ export const metadata: Metadata = {
     creator: "@playgoldwin",
     description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
   },
-  abstract: "PlayGoldWin,Play Gold Win,PlayGold,PlayGolden,PlayGoldenWin,Golden,GoldenWin",
 };
 
 export default function RootLayout({
