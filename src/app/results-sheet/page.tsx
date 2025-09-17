@@ -14,12 +14,13 @@ export const metadata: Metadata = {
         title: "playgolddwin",
         type: "website",
         url: "https://playgolddwin.com",
-        description: "play gold win, see you number result, price"
+        description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
     },
     twitter: {
         card: "summary_large_image",
         site: "@playgolddwin",
-        creator: "@playgolddwin"
+        creator: "@playgolddwin",
+        description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
     }
 }
 

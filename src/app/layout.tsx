@@ -14,21 +14,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Play Gold Win",
-  description: "Play gold win, see your number result here with play gold win. play gold win",
-  keywords: ["PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin", "PlayGoldWin",],
+  title: "PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,PlayGoldWin,",
+  description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
+  keywords: ["PlayGoldWin lottery results", "playgoldwin", "playgoldwin1", "PlayGolden", "Play GoldWin", "Play Gold Win", "PlayGoldWin", "PlayGolddWin", "PlayGolddWin", "PlayGoldWin", "PlayGoldWin",],
   robots: { index: true, follow: true },
   openGraph: {
     title: "playgoldwin",
     type: "website",
     url: "https://playgolddwin.com",
-    description: "play gold win, see you number result, price"
+    description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
   },
   twitter: {
     card: "summary_large_image",
     site: "@playgoldwin",
-    creator: "@playgoldwin"
-  }
+    creator: "@playgoldwin",
+    description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
+  },
+  abstract: "PlayGoldWin,Play Gold Win,PlayGold,PlayGolden,PlayGoldenWin,Golden,GoldenWin"
 };
 
 export default function RootLayout({
