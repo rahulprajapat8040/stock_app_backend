@@ -21,7 +21,6 @@ export async function middleware(req: NextRequest) {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
-            console.log(res.ok)
             // If token is invalid or expired → redirect to login
             if (!res.ok) {
                 return NextResponse.redirect(new URL("/login", req.url));
