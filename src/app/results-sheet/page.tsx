@@ -35,7 +35,8 @@ export default async function Home({
 
     // ✅ Decide time based on whether the date is today
     let finalDate: string | null = null;
-
+    console.log('is today', today)
+    console.log('date is', date)
     if (moment(date, "YYYY-MM-DD", true).isValid()) {
         if (date === today) {
             // If today → use current time
@@ -83,7 +84,7 @@ export default async function Home({
                         {selectedDate.format("DD.MM.YYYY")}
                     </span>
                 </h1>
-                
+
                 <div className="w-full flex justify-between px-2">
                     <div>
                         <Link href={'/'} className="text inline-block text-xs  font-bold text-[#f2e70f]">Home</Link>
