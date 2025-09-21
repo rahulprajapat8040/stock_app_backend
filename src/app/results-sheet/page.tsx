@@ -31,8 +31,7 @@ export default async function Home({
 }) {
     const { date } = await searchParams;
 
-    const today = moment().format("YYYY-MM-DD");
-
+    const today = moment().utcOffset(330).format("YYYY-MM-DD");
     // ✅ Decide time based on whether the date is today
     let finalDate: string | null = null;
     console.log('is today', today)
