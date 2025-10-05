@@ -7,11 +7,12 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "PlayGoldWin Lottery Results | Daily Winning Numbers & Draw Times",
-  description: "Check today's PlayGoldWin lottery results, winning numbers, and draw schedule. Fast & accurate updates.",
+  title: "PlayGoldWin Lottery Results | Play gold win new live",
+  description: "Select Date : 04, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31..",
   keywords: [
     "PlayGoldWin",
     "playgoldwin",
+    "play gold win live",
     "play gold win",
     "lottery results",
     "daily draw",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     "PlayGoldWin today result",
     "PlayGoldWin latest results",
     "PlayGoldWin lottery schedule",
-    "PlayGoldWin dry day",
+    "Play Gold Win trusted result",
     "PlayGoldWin result sheet"
   ],
   abstract: "Accurate daily PlayGoldWin lottery results, draw timings, and winning numbers.",
