@@ -8,6 +8,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "PlayGoldWin Result Sheet | Latest Winning Numbers & Draw History",
     description: "View the official PlayGoldWin result sheet with today's winning numbers, past draw history, and dry day updates. Fast and accurate results.",
+    abstract: "Daily updated PlayGoldWin lottery results with draw timings, winning numbers, and dry day alerts.",
     keywords: [
         "PlayGoldWin",
         "Play Gold Win Result Sheet",
@@ -23,6 +24,8 @@ export const metadata: Metadata = {
     openGraph: {
         title: "PlayGoldWin Result Sheet",
         type: "website",
+        locale: 'en_IN',
+        siteName: 'PlayGoldWin',
         url: "https://playgolddwin.com/results-sheet",
         description: "Check PlayGoldWin result sheet for winning numbers, draw history, and dry day updates.",
     },

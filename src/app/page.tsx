@@ -29,6 +29,8 @@ export const metadata: Metadata = {
     title: "PlayGoldWin Lottery Results",
     type: "website",
     url: "https://playgolddwin.com",
+    locale: 'en_IN',
+    siteName: 'PlayGoldWin',
     description: "Check PlayGoldWin lottery results, winning numbers, and draw timings. Updated daily.",
   },
   twitter: {
