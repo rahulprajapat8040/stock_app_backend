@@ -6,21 +6,31 @@ import { apiCall } from "../CallApi";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "********** Result Sheet **********",
-    description: "Play gold win, see your number result here with play gold win. play gold win",
-    keywords: ["PlayGoldWin", "Play Gold Win Result Sheet", "result sheet", "playgoldwin resultsheet", "result sheet play gold win", "Play Gold Win", "resultsheet playgoldwin", "resultsheetplaygoldwin", "PlayGolddWin", "PlayGoldWin", "PlayGoldWin",],
+    title: "PlayGoldWin Result Sheet | Latest Winning Numbers & Draw History",
+    description: "View the official PlayGoldWin result sheet with today's winning numbers, past draw history, and dry day updates. Fast and accurate results.",
+    keywords: [
+        "PlayGoldWin",
+        "Play Gold Win Result Sheet",
+        "PlayGoldWin result sheet",
+        "lottery result sheet",
+        "PlayGoldWin winning numbers",
+        "PlayGoldWin draw history",
+        "PlayGoldWin today result",
+        "PlayGoldWin dry day",
+        "PlayGoldWin past results"
+    ],
     robots: { index: true, follow: true },
     openGraph: {
-        title: "playgolddwin",
+        title: "PlayGoldWin Result Sheet",
         type: "website",
-        url: "https://playgolddwin.com",
-        description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
+        url: "https://playgolddwin.com/results-sheet",
+        description: "Check PlayGoldWin result sheet for winning numbers, draw history, and dry day updates.",
     },
     twitter: {
         card: "summary_large_image",
-        site: "@playgolddwin",
-        creator: "@playgolddwin",
-        description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
+        site: "@playgoldwin",
+        creator: "@playgoldwin",
+        description: "Check PlayGoldWin result sheet for winning numbers, draw history, and dry day updates.",
     }
 }
 

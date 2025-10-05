@@ -7,24 +7,38 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "PlayGoldWin – Latest Lottery Results",
-  description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
-  keywords: ["PlayGoldWin", "lottery results", "daily draw", "winning numbers"],
-  abstract: "PlayGoldWin provides accurate daily lottery results and draw timings.",
+  title: "PlayGoldWin Lottery Results | Daily Winning Numbers & Draw Times",
+  description: "Check today's PlayGoldWin lottery results, winning numbers, and draw schedule. Fast & accurate updates.",
+  keywords: [
+    "PlayGoldWin",
+    "playgoldwin",
+    "play gold win",
+    "lottery results",
+    "daily draw",
+    "winning numbers",
+    "PlayGoldWin draw time",
+    "PlayGoldWin today result",
+    "PlayGoldWin latest results",
+    "PlayGoldWin lottery schedule",
+    "PlayGoldWin dry day",
+    "PlayGoldWin result sheet"
+  ],
+  abstract: "Accurate daily PlayGoldWin lottery results, draw timings, and winning numbers.",
   robots: { index: true, follow: true },
   openGraph: {
-    title: "playgoldwin",
+    title: "PlayGoldWin Lottery Results",
     type: "website",
     url: "https://playgolddwin.com",
-    description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
+    description: "Check PlayGoldWin lottery results, winning numbers, and draw timings. Updated daily.",
   },
   twitter: {
     card: "summary_large_image",
     site: "@playgoldwin",
     creator: "@playgoldwin",
-    description: "Playgoldwin is your trusted source for the latest Playgoldwin lottery results.",
+    description: "Check PlayGoldWin lottery results, winning numbers, and draw timings. Updated daily.",
   },
 }
+
 
 export default async function Home({
   searchParams,
@@ -117,7 +131,7 @@ export default async function Home({
             <div className="flex items-center justify-center mt-10 px-2">
               <div className="max-w-sm w-full p-4 bg-white">
                 <div className="h-36 bg-red-700 flex items-center justify-center w-full">
-                  <h1 className="text-4xl font-bold text-white">DRY DAY</h1>
+                  <h2 className="text-4xl font-bold text-white">DRY DAY</h2>
                 </div>
               </div>
             </div>
