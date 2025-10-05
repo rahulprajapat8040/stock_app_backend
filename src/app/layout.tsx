@@ -49,6 +49,29 @@ export default function RootLayout({
     gtag('config', 'G-C9V0RXZJ10');
   `}
         </Script>
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "PlayGoldWin Lottery Results",
+              "url": "https://playgolddwin.com",
+              "description": "Check today's PlayGoldWin lottery results, winning numbers, and draw schedule. Fast & accurate updates.",
+              "publisher": {
+                "@type": "Organization",
+                "name": "PlayGoldWin",
+                "url": "https://playgolddwin.com",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://playgolddwin.com/logo.png"
+                }
+              }
+            }),
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
