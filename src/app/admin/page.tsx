@@ -68,9 +68,9 @@ const Dashboard = async ({
                             <h2 className="text-lg font-semibold">{moment(slot.stockTime).format("hh:mm A")}</h2>
                             <div className="flex gap-2 items-center">
                                 <EyeButton stockId={slot.id} status={slot.isPublic} />
-                                {/* <Link href={`/admin/add?stockId=${slot.id}`} className="flex items-center gap-1 text-sm bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-300">
+                                <Link href={`/admin/add?stockId=${slot.id}`} className="flex items-center gap-1 text-sm bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-300">
                                     <Pencil size={14} /> Edit
-                                </Link> */}
+                                </Link>
                                 {/* <DeleteButton stockId={slot.id} /> */}
                             </div>
                         </div>

@@ -135,8 +135,10 @@ export default async function Home({
                                                 </td>
                                                 <td
                                                     className="
-    border border-gray-400 px-1 text-left
-    text-[2.9vw]                        /* base for very small screens */
+  border border-gray-400 px-1 text-left
+    text-[2.7vw]   
+    [@media(min-width:270px)]:text-[2.85vw]
+    [@media(min-width:300px)]:text-[3vw]
     [@media(min-width:345px)]:text-[3.1vw]   /* >=345px */
     [@media(min-width:385px)]:text-[3.2vw]   /* >=385px */
     [@media(min-width:435px)]:text-[3.2vw]   /* >=435px */
