@@ -71,7 +71,7 @@ const Dashboard = async ({
                                 <Link href={`/admin/add?stockId=${slot.id}`} className="flex items-center gap-1 text-sm bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-300">
                                     <Pencil size={14} /> Edit
                                 </Link>
-                                {/* <DeleteButton stockId={slot.id} /> */}
+                                <DeleteButton stockId={slot.id} />
                             </div>
                         </div>
 

@@ -47,8 +47,6 @@ export default async function Home({
     const today = moment().utcOffset(330).format("YYYY-MM-DD");
     // ✅ Decide time based on whether the date is today
     let finalDate: string | null = null;
-    console.log('is today', today)
-    console.log('date is', date)
     if (moment(date, "YYYY-MM-DD", true).isValid()) {
         if (date === today) {
             // If today → use current time
