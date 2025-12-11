@@ -1,0 +1,12 @@
+{
+  "/(auth)/login/page": "/login",
+  "/(auth)/password-reset/page": "/password-reset",
+  "/_not-found/page": "/_not-found",
+  "/admin/add/page": "/admin/add",
+  "/admin/page": "/admin",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
+  "/results-sheet/page": "/results-sheet",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml"
+}
